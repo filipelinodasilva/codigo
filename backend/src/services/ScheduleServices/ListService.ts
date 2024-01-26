@@ -9,7 +9,6 @@ interface Request {
   userId?: number | string;
   companyId?: number;
   pageNumber?: string | number;
-  recorrency?: boolean; 
 }
 
 interface Response {
@@ -23,8 +22,7 @@ const ListService = async ({
   contactId = "",
   userId = "",
   pageNumber = "1",
-  companyId,
-  recorrency
+  companyId
 }: Request): Promise<Response> => {
   let whereCondition = {};
   const limit = 20;

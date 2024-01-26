@@ -16,13 +16,20 @@ import {
   TextField,
   Switch,
   FormControlLabel,
+  FormControl,
+  FormGroup,
+  Typography,
+  Tooltip,
+  Paper,
   Grid,
+  Checkbox,
 } from "@material-ui/core";
 
 import api from "../../services/api";
 import { i18n } from "../../translate/i18n";
 import toastError from "../../errors/toastError";
 import QueueSelect from "../QueueSelect";
+import HelpOutlineOutlinedIcon from "@material-ui/icons/HelpOutlineOutlined";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -66,6 +73,7 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
     complationMessage: "",
     outOfHoursMessage: "",
     ratingMessage: "",
+    transferMessage: "",
     isDefault: false,
     token: "",
     provider: "beta",
@@ -191,6 +199,13 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
                   />
                 </div>
                 <div>
+                 <Typography style={{fontSize: "11px"}}>
+                  {`Variaveis: ( {{ms}}=> Turno, 
+                  {{name}}=> Nome do contato, 
+                  {{protocol}}=> protocolo, {{hora}}=> hora )`}
+                 </Typography>
+                </div>
+                <div>
                   <Field
                     as={TextField}
                     label={i18n.t("queueModal.form.complationMessage")}
@@ -205,6 +220,26 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
                     }
                     helperText={
                       touched.complationMessage && errors.complationMessage
+                    }
+                    variant="outlined"
+                    margin="dense"
+                  />
+                </div>
+                <div>
+                  <Field
+                    as={TextField}
+                    label={i18n.t("queueModal.form.transferMessage")}
+                    type="transferMessage"
+                    multiline
+                    rows={4}
+                    fullWidth
+                    name="transferMessage"
+                    error={
+                      touched.transferMessage &&
+                      Boolean(errors.transferMessage)
+                    }
+                    helperText={
+                      touched.transferMessage && errors.transferMessage
                     }
                     variant="outlined"
                     margin="dense"

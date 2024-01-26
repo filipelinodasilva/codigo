@@ -274,8 +274,9 @@ const reducer = (state, action) => {
   if (action.type === "LOAD_MESSAGES") {
     const messages = action.payload;
     const newMessages = [];
-
+    
     messages.forEach((message) => {
+      
       const messageIndex = state.findIndex((m) => m.id === message.id);
       if (messageIndex !== -1) {
         state[messageIndex] = message;
@@ -381,6 +382,7 @@ const MessagesList = ({ ticket, ticketId, isGroup }) => {
       }
 
       if (data.action === "update") {
+        // console.loh(data)
         dispatch({ type: "UPDATE_MESSAGE", payload: data.message });
       }
     });
@@ -431,6 +433,7 @@ const MessagesList = ({ ticket, ticketId, isGroup }) => {
       return <ModalImageCors imageUrl={message.mediaUrl} />;
     }
     if (message.mediaType === "audio") {
+    
       return (
         <audio controls>
           <source src={message.mediaUrl} type="audio/ogg"></source>
@@ -759,7 +762,7 @@ const MessagesList = ({ ticket, ticketId, isGroup }) => {
       >
         {messagesList.length > 0 ? renderMessages() : []}
       </div>
-      {ticket?.channel !== "whatsapp" && (
+      {ticket?.channel !== "whatsapp" || ticket.channel === undefined && (
         <div
           style={{
             width: "100%",

@@ -13,7 +13,6 @@ interface ScheduleData {
   companyId?: number;
   ticketId?: number;
   userId?: number;
-  recorrency?: boolean;
 }
 
 interface Request {
@@ -44,7 +43,6 @@ const UpdateUserService = async ({
     contactId,
     ticketId,
     userId,
-    recorrency
   } = scheduleData;
 
   try {
@@ -60,7 +58,6 @@ const UpdateUserService = async ({
     contactId,
     ticketId,
     userId,
-    recorrency
   });
 
   await schedule.reload();

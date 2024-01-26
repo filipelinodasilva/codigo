@@ -142,7 +142,7 @@ export default function ChatPopover() {
       if (data.action === "new-message") {
         dispatch({ type: "CHANGE_CHAT", payload: data });
         if (data.newMessage.senderId !== user.id) {
-          console.log(data);
+        
           soundAlertRef.current();
         }
       }
@@ -224,7 +224,7 @@ export default function ChatPopover() {
         onClick={handleClick}
       >
         <Badge color="secondary" variant="dot" invisible={invisible}>
-          <ForumIcon />
+          <ForumIcon style={{ color: "white" }} />
         </Badge>
       </IconButton>
       <Popover
@@ -256,7 +256,6 @@ export default function ChatPopover() {
                 <ListItem
                   key={key}
                   style={{
-                    background: key % 2 === 0 ? "#ededed" : "white",
                     border: "1px solid #eee",
                     cursor: "pointer",
                   }}

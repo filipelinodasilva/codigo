@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NotificationsPopOver = () => {
+const NotificationsPopOver = (props) => {
   const classes = useStyles();
 
   const history = useHistory();
@@ -55,7 +55,7 @@ const NotificationsPopOver = () => {
   const [, setDesktopNotifications] = useState([]);
 
   const { tickets } = useTickets({ withUnreadMessages: "true" });
-  const [play] = useSound(alertSound);
+  const [play] = useSound(alertSound, {volume: props.volume});
   const soundAlertRef = useRef();
 
   const historyRef = useRef(history);
@@ -112,6 +112,7 @@ const NotificationsPopOver = () => {
     });
 
     socket.on(`company-${companyId}-appMessage`, (data) => {
+      
 			if (
 				data.action === "create" &&
 				!data.message.read &&
@@ -194,14 +195,16 @@ const NotificationsPopOver = () => {
     <>
       <IconButton
         onClick={handleClick}
+        
         ref={anchorEl}
         aria-label="Mostrar Notificações"
         variant="contained"
 
       >
-          <ChatIcon />
-        {/* <Badge badgeContent={notifications.length} color="secondary">
-        </Badge> */}
+          <ChatIcon style={{ color: "white" }} />
+        {notifications.length > 0 ?<Badge variant="dot" color="secondary"
+        style={{marginTop: "-25px"}}>
+        </Badge>: ""}
       </IconButton>
       <Popover
         disableScrollLock

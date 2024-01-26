@@ -31,11 +31,12 @@ const useStyles = makeStyles((theme) => ({
     overflowY: "auto",
     height: "100%",
     ...theme.scrollbarStyles,
-    backgroundColor: "#eee",
+    //backgroundColor: "#eee",
   },
   inputArea: {
     position: "relative",
     height: "auto",
+    border: "1px solid #ccc"
   },
   input: {
     padding: "20px",
@@ -47,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "10px 10px 5px",
     margin: "10px",
     position: "relative",
-    backgroundColor: "white",
+    backgroundColor: "blue",
     maxWidth: 300,
     borderRadius: 10,
     borderBottomLeftRadius: 0,
@@ -57,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "10px 10px 5px",
     margin: "10px 10px 10px auto",
     position: "relative",
-    backgroundColor: "#E3F3F9",
+    backgroundColor: "green",
     textAlign: "right",
     maxWidth: 300,
     borderRadius: 10,
